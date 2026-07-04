@@ -50,7 +50,9 @@ input {
 .top-nav {
   position: sticky;
   top: 0;
-  z-index: 50;
+  /* por encima de los panes de Leaflet (hasta ~700 de z-index),
+     para que el mapa no se dibuje arriba del nav ni del menu mobile */
+  z-index: 1000;
   background: var(--nav-bg);
   color: var(--nav-text);
   border-bottom: 1px solid #170d07;
@@ -1317,6 +1319,7 @@ textarea.input {
     top: 62px;
     left: 0;
     right: 0;
+    z-index: 1000;
     background: var(--nav-bg);
     flex-direction: column;
     align-items: flex-start;
