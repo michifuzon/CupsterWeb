@@ -68,7 +68,6 @@ export function TopNav() {
                 logout();
                 closeMenu();
               }}
-              style={{ fontSize: 14 }}
             >
               Salir ({user.nombre})
             </button>

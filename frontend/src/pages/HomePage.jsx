@@ -95,7 +95,7 @@ export function HomePage() {
             <Link to="/cafeterias" className="btn-lg btn-lg-primary">
               Explorar cafeterías
             </Link>
-            <a href="#que-es-cupster" className="btn-lg btn-lg-secondary btn-lg-on-photo">
+            <a href="#que-es-cupster" className="btn-lg btn-lg-primary">
               Conocer Cupster
             </a>
           </div>

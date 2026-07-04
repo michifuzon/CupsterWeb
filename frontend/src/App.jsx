@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { TopNav } from "./components/TopNav.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { ScrollToTop } from "./components/ScrollToTop.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
 import { BaristasPage } from "./pages/BaristasPage.jsx";
 import { BaristaDetailPage } from "./pages/BaristaDetailPage.jsx";
@@ -23,6 +24,7 @@ import { FaqPage } from "./pages/FaqPage.jsx";
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <TopNav />
       <Routes>
         <Route path="/" element={<HomePage />} />

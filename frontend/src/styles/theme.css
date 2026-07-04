@@ -124,6 +124,12 @@ input {
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--card);
+  color: var(--text);
+}
+
+.input::placeholder {
+  color: var(--muted);
+  opacity: 1;
 }
 
 /* ===== CARDS / GRID ===== */
@@ -209,19 +215,6 @@ input {
   flex-wrap: wrap;
   opacity: 0;
   animation: fadeInUp 0.7s ease-out 0.38s forwards;
-}
-
-.btn-lg-on-photo {
-  color: #fff8ee;
-  background: rgba(20, 11, 4, 0.35);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(6px);
-}
-
-.btn-lg-on-photo:hover {
-  color: #2a1810;
-  border-color: #fff8ee;
-  background: #fff8ee;
 }
 
 @media (max-width: 640px) {
@@ -318,6 +311,7 @@ input {
 }
 
 .about-section h2 {
+  scroll-margin-top: 96px;
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 16px;
@@ -1200,6 +1194,26 @@ textarea.input {
   opacity: 0.8;
 }
 
+@media (max-width: 640px) {
+  .footer-grid {
+    text-align: center;
+  }
+
+  .footer-col {
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 /* ===== FAQ ===== */
 
 .faq-question {
@@ -1284,6 +1298,15 @@ textarea.input {
 
   .nav-mobile-account {
     display: block;
-    margin-top: 10px;
+    margin-top: 6px;
+  }
+
+  .nav-mobile-account .account-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--nav-muted);
   }
 }
