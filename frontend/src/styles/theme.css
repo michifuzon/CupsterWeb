@@ -422,6 +422,11 @@ input {
   padding-bottom: 8px;
 }
 
+.h-scroll .coffee-card {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
 .coffee-card {
   min-width: 180px;
   background: var(--card);
@@ -1258,13 +1263,17 @@ textarea.input {
     gap: 4px;
     padding: 12px 20px 20px;
     max-height: 0;
-    overflow-y: auto;
-    transition: max-height 0.25s ease;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.25s ease, visibility 0s linear 0.25s;
     border-bottom: 1px solid #170d07;
   }
 
   .top-nav nav.nav-open {
     max-height: calc(100vh - 62px);
+    overflow-y: auto;
+    visibility: visible;
+    transition: max-height 0.25s ease, visibility 0s linear 0s;
   }
 
   .top-nav nav a {
