@@ -6,6 +6,7 @@
 }
 
 :root {
+  color-scheme: light;
   --bg: #e4d3b8;
   --card: #f8f0e0;
   --text: #241206;
@@ -398,6 +399,7 @@ input {
 .action-btn {
   flex: 1;
   height: 56px;
+  padding: 0 22px;
   background: var(--card);
   border-radius: 18px;
   border: none;
@@ -407,6 +409,7 @@ input {
   gap: 8px;
   font-weight: 500;
   color: var(--text);
+  text-align: center;
 }
 
 .section-title {

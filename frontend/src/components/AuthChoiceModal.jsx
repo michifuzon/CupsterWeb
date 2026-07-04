@@ -175,7 +175,7 @@ export function AuthChoiceModal({ onClose }) {
               />
 
               <div style={{ display: "flex", gap: 10 }}>
-                <label style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                <label style={{ display: "flex", gap: 6, alignItems: "center", color: "var(--text)", fontWeight: 600 }}>
                   <input
                     type="radio"
                     name="role"
@@ -184,7 +184,7 @@ export function AuthChoiceModal({ onClose }) {
                   />
                   Cliente
                 </label>
-                <label style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                <label style={{ display: "flex", gap: 6, alignItems: "center", color: "var(--text)", fontWeight: 600 }}>
                   <input
                     type="radio"
                     name="role"
