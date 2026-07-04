@@ -390,20 +390,6 @@ input {
   gap: 16px;
 }
 
-@media (max-width: 480px) {
-  .quick-actions {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .action-btn {
-    height: 76px;
-    padding: 0 24px;
-    font-size: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  }
-}
-
 .action-btn {
   flex: 1;
   height: 68px;
@@ -419,6 +405,20 @@ input {
   font-size: 15px;
   color: var(--text);
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .quick-actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .action-btn {
+    height: 76px;
+    padding: 0 24px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
 }
 
 .section-title {
