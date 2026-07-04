@@ -392,6 +392,7 @@ input {
 
 .action-btn {
   flex: 1;
+  min-width: 0;
   height: 68px;
   padding: 0 28px;
   background: var(--card);
@@ -409,14 +410,17 @@ input {
 
 @media (max-width: 480px) {
   .quick-actions {
-    flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
 
   .action-btn {
-    height: 76px;
-    padding: 0 24px;
-    font-size: 16px;
+    height: auto;
+    min-height: 68px;
+    padding: 10px 14px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.25;
+    white-space: normal;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
 }

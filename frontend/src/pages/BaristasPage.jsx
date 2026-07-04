@@ -4,13 +4,13 @@ import { baristas } from "../data/baristas.js";
 import { BaristaCard } from "../components/BaristaCard.jsx";
 import { PostCard } from "../components/PostCard.jsx";
 import { SkeletonCards } from "../components/Skeleton.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 
 export function BaristasPage() {
   const [posts, setPosts] = useState(null); // null = cargando
 
   useEffect(() => {
-    api.getPosts().then(setPosts);
+    supabaseData.getPosts().then(setPosts);
   }, []);
 
   function onPostChange(updated) {

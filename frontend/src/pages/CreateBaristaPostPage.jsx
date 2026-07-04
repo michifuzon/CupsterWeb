@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RequireBarista } from "../components/RequireBarista.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 
 const METODOS = ["Espresso", "V60", "Chemex", "Prensa francesa", "Cold Brew", "Aeropress", "Otro"];
 
@@ -29,10 +29,10 @@ function CreateBaristaPostForm() {
   useEffect(() => {
     if (!editando) return;
 
-    api
+    supabaseData
       .getPost(id)
       .then(post => {
-        if (post.authorId !== user.userId) {
+        if (post.authorId !== user.id) {
           setForbidden(true);
           return;
         }
@@ -45,7 +45,7 @@ function CreateBaristaPostForm() {
       })
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
-  }, [id, editando, user.userId]);
+  }, [id, editando, user.id]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -65,8 +65,8 @@ function CreateBaristaPostForm() {
     try {
       const body = { titulo, descripcion, metodo, receta, etiquetas, imagen };
       editando
-        ? await api.editarPost(user.token, id, body)
-        : await api.crearPost(user.token, body);
+        ? await supabaseData.editarPost(user, id, body)
+        : await supabaseData.crearPost(user, body);
 
       showToast(editando ? "Post actualizado" : "Post publicado", "success");
       navigate("/baristas");

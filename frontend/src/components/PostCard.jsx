@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 import { ConfirmDialog } from "./ConfirmDialog.jsx";
 
 export function PostCard({ post, onChange, onDeleted }) {
@@ -13,15 +13,15 @@ export function PostCard({ post, onChange, onDeleted }) {
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  const esAutor = user && user.userId === post.authorId;
-  const yaLikeado = user && post.likes.includes(user.userId);
+  const esAutor = user && user.id === post.authorId;
+  const yaLikeado = user && post.likes.includes(user.id);
 
   async function toggleLike() {
     if (!user) {
       showToast("Iniciá sesión para dar like", "info");
       return;
     }
-    const updated = await api.likePost(user.token, post.id);
+    const updated = await supabaseData.likePost(user, post.id);
     onChange?.(updated);
   }
 
@@ -35,7 +35,7 @@ export function PostCard({ post, onChange, onDeleted }) {
 
     setBusy(true);
     try {
-      const updated = await api.comentarPost(user.token, post.id, comentario.trim());
+      const updated = await supabaseData.comentarPost(user, post.id, comentario.trim());
       setComentario("");
       onChange?.(updated);
     } catch (err) {
@@ -48,7 +48,7 @@ export function PostCard({ post, onChange, onDeleted }) {
   async function eliminar() {
     setBusy(true);
     try {
-      await api.eliminarPost(user.token, post.id);
+      await supabaseData.eliminarPost(user, post.id);
       showToast("Post eliminado", "success");
       onDeleted?.(post.id);
     } catch (err) {

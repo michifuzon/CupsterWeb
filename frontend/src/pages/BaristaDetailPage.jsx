@@ -5,7 +5,7 @@ import { PostCard } from "../components/PostCard.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useFollows } from "../context/FollowsContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 
 export function BaristaDetailPage() {
   const { id } = useParams();
@@ -21,7 +21,7 @@ export function BaristaDetailPage() {
 
   useEffect(() => {
     if (!barista) return;
-    api.getPosts().then(all => setPosts(all.filter(p => p.authorNombre === barista.name)));
+    supabaseData.getPosts().then(all => setPosts(all.filter(p => p.authorNombre === barista.name)));
   }, [barista]);
 
   async function onToggleSeguir() {

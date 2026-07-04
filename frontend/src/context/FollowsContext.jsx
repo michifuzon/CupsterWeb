@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 
 const FollowsContext = createContext(null);
 
@@ -15,8 +15,8 @@ export function FollowsProvider({ children }) {
       setBaristas([]);
       return;
     }
-    api
-      .getFollows(user.token)
+    supabaseData
+      .getFollows(user.id)
       .then(f => {
         setCafeterias(f.cafeterias);
         setBaristas(f.baristas);
@@ -26,14 +26,14 @@ export function FollowsProvider({ children }) {
 
   async function toggleFollowCafeteria(id) {
     if (!user) return false;
-    const actuales = await api.toggleFollowCafeteria(user.token, id);
+    const actuales = await supabaseData.toggleFollowCafeteria(user.id, id);
     setCafeterias(actuales);
     return actuales.includes(id);
   }
 
   async function toggleFollowBarista(id) {
     if (!user) return false;
-    const actuales = await api.toggleFollowBarista(user.token, id);
+    const actuales = await supabaseData.toggleFollowBarista(user.id, id);
     setBaristas(actuales);
     return actuales.includes(id);
   }

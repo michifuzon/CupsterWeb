@@ -9,21 +9,9 @@ const dbFile = path.join(dataDir, "db.json");
 
 mkdirSync(dataDir, { recursive: true });
 
-const defaultData = {
-  mesas: {},
-  usuarios: [],
-  posts: [],
-  favoritos: [], // { userId, cafeteriaId }
-  resenas: [], // { id, cafeteriaId, userId, userNombre, rating, comentario, createdAt }
-  follows: [] // { userId, targetType: "cafeteria" | "barista", targetId }
-};
+const defaultData = { mesas: {} };
 
 export const db = await JSONFilePreset(dbFile, defaultData);
-
-// migración suave para bases ya existentes creadas antes de sumar estas colecciones
-for (const key of ["usuarios", "posts", "favoritos", "resenas", "follows"]) {
-  if (!db.data[key]) db.data[key] = [];
-}
 
 export function mesaVacia(id) {
   return { id, estado: "armando", comensales: {}, pagos: {} };

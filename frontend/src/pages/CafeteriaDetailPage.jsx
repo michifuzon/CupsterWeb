@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { useFavorites } from "../context/FavoritesContext.jsx";
 import { useFollows } from "../context/FollowsContext.jsx";
 import { useToast } from "../context/ToastContext.jsx";
-import { api } from "../services/api.js";
+import { supabaseData } from "../services/supabaseData.js";
 
 function Estrellas({ value, onChange }) {
   return (
@@ -52,7 +52,7 @@ export function CafeteriaDetailPage() {
 
   useEffect(() => {
     if (!place) return;
-    api.getResenas(place.id).then(setResenas);
+    supabaseData.getResenas(place.id).then(setResenas);
   }, [place]);
 
   async function onToggleFavorito() {
@@ -73,7 +73,7 @@ export function CafeteriaDetailPage() {
 
     setEnviandoResena(true);
     try {
-      const actualizadas = await api.dejarResena(user.token, place.id, rating, comentario);
+      const actualizadas = await supabaseData.dejarResena(user, place.id, rating, comentario);
       setResenas(actualizadas);
       setComentario("");
       showToast("¡Gracias por tu reseña!", "success");
