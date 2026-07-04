@@ -94,8 +94,8 @@ export function AuthChoiceModal({ onClose }) {
             </button>
 
             <button
-              className="btn-secondary"
-              style={{ borderRadius: 16, padding: 10, border: "none" }}
+              className="btn-outline-accent"
+              style={{ borderRadius: 16, padding: 10 }}
               onClick={() => setView("register")}
             >
               Crear una cuenta
